@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>News Classification</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<h1>News Classification System</h1>
+
+<form action="/predict" method="post">
+
+<textarea
+name="article"
+rows="12"
+cols="80"
+placeholder="Enter News Article"></textarea>
+
+<br><br>
+
+<button type="submit">Predict</button>
+
+</form>
+
+{% if prediction %}
+
+<h2>Predicted Category:</h2>
+
+<p>{{ prediction }}</p>
+
+<h2>Recommended Articles:</h2>
+
+<ol>
+
+{% for article in recommendations %}
+
+<li>{{ article }}</li>
+
+{% endfor %}
+
+</ol>
+
+{% endif %}
+
+</body>
+
+</html>
